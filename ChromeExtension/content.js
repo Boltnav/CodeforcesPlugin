@@ -1,1 +1,1 @@
-console.log("\nContent script currently running.\n")
+console.log("\nArnav's content script currently running.\n")
