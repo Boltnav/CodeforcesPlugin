@@ -1,0 +1,1 @@
+console.log("\nContent script currently running.\n")
