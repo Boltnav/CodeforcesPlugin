@@ -1,5 +1,8 @@
 import requests
 import json
+from flask import Flask, jsonify
+
+app = Flask(__name__)
 
 def fetch_data():
     # raw_contest_list = requests.get("https://codeforces.com/api/contest.list?gym=false")
@@ -39,10 +42,17 @@ def fetch_data():
     # print(contestwise_list)
     return contestwise_list
 
-def save_data(data, filename='codeforces_data.json'):
-    with open(filename, 'w') as file:
-        json.dump(data, file, indent=4)
+# Set up a route that your extension can call
+@app.route('/getdata', methods=['GET'])
+def get_data():
+    data = fetch_data()
+    return jsonify(data)
+
+# def save_data(data, filename='codeforces_data.json'):
+#     with open(filename, 'w') as file:
+#         json.dump(data, file, indent=4)
 
 if __name__ == '__main__':
-    data = fetch_data()
-    save_data(data)
+    app.run(debug=False)
+    # data = fetch_data()
+    # save_data(data)
