@@ -36,11 +36,14 @@ def fetch_data():
     for i in range(len(problems)):
         local_list.append(problems[i])
         if (problems[i]['index'] == 'A'):       # Handle with care - the ending few problems won't be added unless they end at A
+            local_list.reverse()
             contestwise_list.append(local_list)
             local_list = []
 
     # print(contestwise_list)
     return contestwise_list
+
+# print(fetch_data())
 
 # Set up a route that your extension can call
 @app.route('/getdata', methods=['GET'])

@@ -36,6 +36,7 @@ function addCustomBoxToContests() {
     chrome.storage.local.get('codeforcesData', function(result){
         if (result.codeforcesData) 
         {
+            let iterator = 0;
             const data = result.codeforcesData;
             contestRows.forEach(row => 
             {
@@ -44,16 +45,23 @@ function addCustomBoxToContests() {
 
                 // Create a new div element for the custom box
                 const customBox = document.createElement('div');
-                customBox.textContent = result.codeforcesData[0][0]['name']; // Add your custom text or any other elements here
-                customBox.style.backgroundColor = '#f0f0f0'; // Example: set a light grey background
-                customBox.style.marginLeft = '10px'; // Add some left margin to separate from the contest name
-                customBox.style.padding = '5px'; // Add some padding inside the box
-                customBox.style.display = 'inline-block'; // Ensure the box flows in line with the text
 
-                // Append the custom box to the contest name cell
-                if (contestNameCell) {
-                    contestNameCell.appendChild(customBox);
+                for (let loopIterator = 0; loopIterator < result.codeforcesData[iterator].length; loopIterator++)
+                {
+                    customBox.textContent = result.codeforcesData[iterator][loopIterator]['name']; // Add your custom text or any other elements here
+                    
+                    customBox.style.backgroundColor = '#f0f0f0'; // Example: set a light grey background
+                    customBox.style.marginLeft = '10px'; // Add some left margin to separate from the contest name
+                    customBox.style.padding = '5px'; // Add some padding inside the box
+                    customBox.style.display = 'inline-block'; // Ensure the box flows in line with the text
+
+                    // Append the custom box to the contest name cell
+                    if (contestNameCell) {
+                        contestNameCell.appendChild(customBox);
+                    }
                 }
+
+                iterator = iterator + 1;
             });
         }
         else 
