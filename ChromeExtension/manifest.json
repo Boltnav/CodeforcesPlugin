@@ -5,8 +5,7 @@
   "description": "Enhances the Codeforces contest page",
   "permissions": [
     "storage",
-    "activeTab",
-    "<http://127.0.0.1:5000/getdata>" 
+    "activeTab"
   ],
   "action": {
     "default_popup": "popup.html",
@@ -31,6 +30,7 @@
     "service_worker": "background.js"
   },
   "host_permissions": [
-    "https://codeforces.com/*" 
+    "https://codeforces.com/*",
+    "http://127.0.0.1/*"
   ]
 }
